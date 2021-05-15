@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.invert {
+		filter: invert();
+	}
+	.search > svg {
+		position: absolute;
+		bottom: 1.75rem;
+	}
+}
+
+.html {
+	scroll-behavior: smooth;
+}
