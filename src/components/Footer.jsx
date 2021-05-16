@@ -29,6 +29,10 @@ export default function Footer() {
 					<a href="https://github.com/singhdivjeet/Pokedex" target="_blank">
 						Divjeet
 					</a>
+		& 
+					<a href="https://github.com/shubhpatr/Pokedex" target="_blank">
+						Shubham
+					</a>
 				</div>
 			</footer>
 		</>
