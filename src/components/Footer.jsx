@@ -26,11 +26,11 @@ export default function Footer() {
 				</div>
 				<div className="text-right pr-4  text-gray-700 dark:text-gray-400">
 					Made with ❤ by{" "}
-					<a href="https://github.com/singhdivjeet/Pokedex" target="_blank">
+					<a href="https://www.linkedin.com/in/divjeet-singh/" target="_blank">
 						Divjeet
 					</a>
 		& 
-					<a href="https://github.com/shubhpatr/Pokedex" target="_blank">
+					<a href="https://www.linkedin.com/in/shubhammohapatra/" target="_blank">
 						Shubham
 					</a>
 				</div>
