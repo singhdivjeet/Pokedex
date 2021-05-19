@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import { Context } from "../store/store";
-import { shorten } from "../helpers";
+import { shorten, getPokemonid, returnid } from "../helpers";
 import PokemonThumbnail from "./PokemonThumbnail";
 import PokemonId from "./PokemonId";
 import EmptyMessage from "./EmptyMessage";
@@ -10,8 +10,10 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export default function PokemonModal() {
 	const [state, dispatch] = useContext(Context);
-	const { id, name, types, height, weight, stats, flavor_text_entries } =
+	
+	const { id, name, types, height, weight, stats, flavor_text_entries,order } =
 		state.pokemonProfile;
+	const evolution = state.evolutionList;
 
 	const Name = () => {
 		return (
@@ -20,6 +22,28 @@ export default function PokemonModal() {
 			</div>
 		);
 	};
+
+
+	const Evolution = () =>{
+		// console.log(evolution);
+		// console.log(state.pokemonProfile);
+		console.log(evolution);
+		return(
+			<h1> Evolution
+			<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 dark:bg-gray-900"> 
+				{evolution.map((value) => {
+				return(<div><PokemonThumbnail
+					classes="w-3/4 mx-auto"
+					imgPath={`/pokemon/${value[0].data.id}.webp`}
+				/>
+				<p> {value[0].data.name}</p></div>)}
+				)}
+
+
+			</div></h1>
+		)
+
+	}
 
 	const Types = () => {
 		return (
@@ -132,6 +156,7 @@ export default function PokemonModal() {
 							<Stats />
 							<BaseStats />
 							<Description />
+							<Evolution />
 						</div>
 					</div>
 				) : (

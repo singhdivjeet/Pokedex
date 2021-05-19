@@ -20,6 +20,10 @@ export default function reducer(state, action) {
         ...state,
         searchResult: action.payload
       };
+    case 'SET_EVOLUTION':
+      return {...state,
+        evolutionList: action.payload
+      };
     default:
       return state;
   }

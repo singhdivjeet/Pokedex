@@ -6,6 +6,7 @@ const initialState = {
   pokemonProfile: {},
   modal: false,
   searchResult: [],
+  evolutionList:[],
 };
 
 export default function Store({ children }) {

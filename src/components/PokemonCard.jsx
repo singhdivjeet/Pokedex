@@ -17,11 +17,17 @@ export default function PokemonCard({ name, id }) {
 			.then((obj) => {
 				const pokemonData = obj[0].data;
 				const pokemonSpecies = obj[1].data;
+				const pokemonEvolve = obj[3];
 
 				dispatch({
 					type: "SET_POKEMON_PROFILE",
 					payload: { ...pokemonData, ...pokemonSpecies },
 				});
+				dispatch({
+					type: "SET_POKEMON_PROFILE",
+					payload: { ...pokemonData, ...pokemonSpecies },
+				});
+				dispatch({type:"SET_EVOLUTION", payload: pokemonEvolve})
 				dispatch({ type: "SET_MODAL", payload: true });
 				setLoadingData(false);
 			})
