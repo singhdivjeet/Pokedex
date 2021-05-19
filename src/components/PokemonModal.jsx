@@ -1,4 +1,4 @@
-import { useContext,useState } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../store/store";
 import { shorten, getPokemonid, returnid } from "../helpers";
 import PokemonThumbnail from "./PokemonThumbnail";
@@ -7,11 +7,40 @@ import EmptyMessage from "./EmptyMessage";
 import InGameCry from "./InGameCry";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import * as pokemonAPI from "../data/pokemon";
+import Loader from "./Loader";
 
 export default function PokemonModal() {
 	const [state, dispatch] = useContext(Context);
-	
-	const { id, name, types, height, weight, stats, flavor_text_entries,order } =
+
+	const [loadingData, setLoadingData] = useState(false);
+
+	function showPokemonModal(id) {
+		setLoadingData(true);
+
+		pokemonAPI
+			.getPokemonProfile(id)
+			.then((obj) => {
+				const pokemonData = obj[0].data;
+				const pokemonSpecies = obj[1].data;
+				const pokemonEvolve = obj[3];
+
+				dispatch({
+					type: "SET_POKEMON_PROFILE",
+					payload: { ...pokemonData, ...pokemonSpecies },
+				});
+				dispatch({
+					type: "SET_POKEMON_PROFILE",
+					payload: { ...pokemonData, ...pokemonSpecies },
+				});
+				dispatch({ type: "SET_EVOLUTION", payload: pokemonEvolve });
+				dispatch({ type: "SET_MODAL", payload: true });
+				setLoadingData(false);
+			})
+			.catch((err) => console.log(err));
+	}
+
+	const { id, name, types, height, weight, stats, flavor_text_entries, order } =
 		state.pokemonProfile;
 	const evolution = state.evolutionList;
 
@@ -23,27 +52,45 @@ export default function PokemonModal() {
 		);
 	};
 
-
-	const Evolution = () =>{
+	const Evolution = () => {
 		// console.log(evolution);
 		// console.log(state.pokemonProfile);
-		console.log(evolution);
-		return(
-			<h1> Evolution
-			<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 dark:bg-gray-900"> 
-				{evolution.map((value) => {
-				return(<div><PokemonThumbnail
-					classes="w-3/4 mx-auto"
-					imgPath={`/pokemon/${value[0].data.id}.webp`}
-				/>
-				<p> {value[0].data.name}</p></div>)}
-				)}
-
-
-			</div></h1>
-		)
-
-	}
+		//console.log(evolution);
+		return (
+			<>
+				<div className="inline-block text-xl md:text-2xl pt-6 text-center lg:text-left font-bold capitalize">
+					Evolution Chart
+				</div>
+				<div className="grid grid-cols-3 gap-6 ">
+					{evolution.map((value) => {
+						if (value.length) {
+							return (
+								<div className="pt-4">
+									<div
+										className="relative transform-gpu shadow-lg cursor-pointer rounded-2xl bg-gray-100 dark:bg-gray-800 transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl hover:bg-gray-200 dark:hover:bg-gray-700"
+										onClick={() => showPokemonModal(value[0].data.id)}
+									>
+										<PokemonThumbnail
+											classes="w-3/4 mx-auto rounded-2xl bg-opacity-25 "
+											imgPath={`/pokemon/${value[0].data.id}.webp`}
+										/>
+										<p className=" text-center capitalize font-bold p-2 text-gray-800 dark:text-gray-50">
+											{" "}
+											<PokemonId
+												classes="font-bold text-gray-400 dark:text-gray-500"
+												id={value[0].data.id}
+											/>
+											{value[0].data.name}
+										</p>
+									</div>
+								</div>
+							);
+						}
+					})}
+				</div>
+			</>
+		);
+	};
 
 	const Types = () => {
 		return (
@@ -140,24 +187,30 @@ export default function PokemonModal() {
 					</button>
 				</div>
 				{Object.keys(state.pokemonProfile).length > 0 ? (
-					<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-						<div>
-							<PokemonThumbnail
-								classes="w-3/4 mx-auto"
-								imgPath={`/pokemon/${id}.webp`}
-							/>
-						</div>
-						<div className="col-span-2 text-gray-700 dark:text-gray-200">
-							<div className="flex justify-center md:justify-start mb-3">
-								<Name />
-								<InGameCry id={id} />
+					<div>
+						{loadingData ? (
+							<Loader />
+						) : (
+							<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+								<div>
+									<PokemonThumbnail
+										classes="w-3/4 mx-auto"
+										imgPath={`/pokemon/${id}.webp`}
+									/>
+								</div>
+								<div className="col-span-2 text-gray-700 dark:text-gray-200">
+									<div className="flex justify-center md:justify-start mb-3">
+										<Name />
+										<InGameCry id={id} />
+									</div>
+									<Types />
+									<Stats />
+									<BaseStats />
+									<Description />
+									<Evolution />
+								</div>
 							</div>
-							<Types />
-							<Stats />
-							<BaseStats />
-							<Description />
-							<Evolution />
-						</div>
+						)}
 					</div>
 				) : (
 					<div className="flex p-6 justify-center">

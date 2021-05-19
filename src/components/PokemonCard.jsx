@@ -27,7 +27,7 @@ export default function PokemonCard({ name, id }) {
 					type: "SET_POKEMON_PROFILE",
 					payload: { ...pokemonData, ...pokemonSpecies },
 				});
-				dispatch({type:"SET_EVOLUTION", payload: pokemonEvolve})
+				dispatch({ type: "SET_EVOLUTION", payload: pokemonEvolve });
 				dispatch({ type: "SET_MODAL", payload: true });
 				setLoadingData(false);
 			})
