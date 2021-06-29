@@ -24,10 +24,8 @@
   </p>
 </p>
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
-
-
-
 https://pokeapi.co/ - PokéAPI used for the application
 
 
