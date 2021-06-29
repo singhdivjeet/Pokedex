@@ -1,5 +1,5 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f0b2ad12-abac-44ab-8cf6-45803302b86d/deploy-status)](https://app.netlify.com/sites/pokedexgeneration1/deploys)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-green.svg?style=flat-square)](#contributors-)
 
 <!-- PROJECT LOGO -->
 <br />
@@ -66,9 +66,9 @@ Contributions are what make the open source community such an amazing place to b
 Distributed under the MIT License. See LICENSE for more information.
 
 ## Authors
-[Divjeet Singh](https://www.linkedin.com/in/divjeet-singh/) &
-[Shubham Mohapatra](https://www.linkedin.com/in/shubhammohapatra/) 
-
-
-Project Link: [https://github.com/singhdivjeet/Pokedex](https://github.com/singhdivjeet/Pokedex)
-
+<table>
+  <tr>
+    <td align="center"><a href="https://www.linkedin.com/in/divjeet-singh/"><img src="https://avatars.githubusercontent.com/u/29839416?v=4" width="100px;" alt=""/><br /><sub><b>Divjeet Singh</b></sub></a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/shubhammohapatra/"><img src="https://avatars.githubusercontent.com/u/84135718?v=4" width="100px;" alt=""/><br /><sub><b>Shubham Mohapatra</b></sub></a></td>
+  </tr>
+</table>
