@@ -70,5 +70,5 @@ Distributed under the MIT License. See LICENSE for more information.
 [Shubham Mohapatra](https://www.linkedin.com/in/shubhammohapatra/) 
 
 
-Project Link: [https://github.com/singhdivjeet/Cowin-Notify](https://github.com/singhdivjeet/Pokedex)
+Project Link: [https://github.com/singhdivjeet/Pokedex](https://github.com/singhdivjeet/Pokedex)
 
