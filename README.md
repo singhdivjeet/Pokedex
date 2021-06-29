@@ -37,6 +37,7 @@ List of major frameworks that we used to build our project.
 * [PokéAPI](https://pokeapi.co/)
 
 ## Screenshot
+![alt text](https://i.imgur.com/75ZWaGG.jpeg)
 
 ## Getting Started
 To get a local copy up and running follow these simple steps.
