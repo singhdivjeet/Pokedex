@@ -33,7 +33,7 @@ https://pokeapi.co/ - PokéAPI used for the application
 
 List of major frameworks that we used to build our project. 
 * [ReactJS](https://reactjs.org/)
-* [Tailwind CSS](https://expressjs.com/)
+* [Tailwind CSS](https://tailwindcss.com/)
 * [PokéAPI](https://pokeapi.co/)
 
 ## Screenshot
